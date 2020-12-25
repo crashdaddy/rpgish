@@ -13,21 +13,26 @@ class App extends Component {
 
     this.state = {
       monsters: [],
+      challenge_rating: ''
     
   }
 }
 
- monsterURL = "https://www.dnd5eapi.co/api/monsters/";
+ baseURL = "https://www.dnd5eapi.co/api/monsters/";
 
 
  // far left sources
 getMonsters = () => {
   var self=this;
- Axios.get(this.monsterURL, {
+  let monsterURL = this.baseURL
+  if (this.state.challenge_rating != '') {
+    monsterURL += this.state.challenge_rating
+  }
+ Axios.get(monsterURL, {
    "Content-Type": "application/xml; charset=utf-8"
  })
    .then((responseText) => {
-        console.log(responseText)
+        console.log(monsterURL)
         self.setState({monsters:responseText.data.results})
    })
    .catch((e) => {
@@ -36,6 +41,15 @@ getMonsters = () => {
    });
 }
 
+
+changeLevel = () => {
+  let newLevel = getRandomInt(1,20)
+  let levelText = "?challenge_rating=" + newLevel;
+  this.setState({
+    challenge_rating: levelText
+  })
+  this.getMonsters();
+}
 
 componentDidMount() {
 this.getMonsters()
@@ -54,8 +68,10 @@ this.getMonsters()
             )
 
             }
+
+            <button onClick={this.changeLevel}>Change Level</button>
              </div>
-    
+
     )
     }
 }
