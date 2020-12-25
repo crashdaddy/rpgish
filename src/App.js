@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Axios from 'axios';
 import Paper from '@material-ui/core/Paper';
+import StatsIcons from './Components/StatsIcons/StatsIcons'
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -33,7 +34,6 @@ getMonsters = () => {
    "Content-Type": "application/xml; charset=utf-8"
  })
    .then((responseText) => {
-        console.log(monsterURL)
         self.setState({monsters:responseText.data.results})
    })
    .catch((e) => {
@@ -57,7 +57,6 @@ this.getMonsters()
 
     render() {
      const monsters = this.state.monsters
-     console.log(monsters)
     return (
       
           <div style={{width:"90%",marginRight:'auto',marginLeft:'auto',display:'flex',flexDirection:'row',justifyContent:'space-between',alignItems:'flex-start',flexWrap:'wrap'}}>
@@ -67,7 +66,7 @@ this.getMonsters()
             <Paper elevation={3} style={{margin:'20px',fontSize:'large',verticalAlign:'top',padding:'10px'}}>
              <a href={`https://www.dnd5eapi.co${monster.url}`} target="blank">{monster.name}</a>
              <br/> <img src={`../Tokens/${monster.name}.png`} alt={monster.name} style={{marginTop:'10px',width:'200px',float:'left'}} />
-              
+             <StatsIcons url={monster.url}  />
             </Paper> 
             
             )}  )   
