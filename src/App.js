@@ -47,8 +47,7 @@ changeLevel = () => {
   let levelText = "?challenge_rating=" + newLevel;
   this.setState({
     challenge_rating: levelText
-  })
-  this.getMonsters();
+  },this.getMonsters);
 }
 
 componentDidMount() {
@@ -63,13 +62,13 @@ this.getMonsters()
           <div style={{width:"90%",marginRight:'auto',marginLeft:'auto',display:'flex',flexDirection:'row',justifyContent:'space-between',alignItems:'flex-start',flexWrap:'wrap'}}>
             {monsters && monsters.map(monster => 
             <div style={{display:'inline-block',margin:'5px'}}>
-              {monster.name}
+              <a href={`https://www.dnd5eapi.co${monster.url}`} target="blank">{monster.name}</a>
             </div> 
             )
 
             }
-
-            <button onClick={this.changeLevel}>Change Level</button>
+            <p/>
+            <button onClick={this.changeLevel} style={{marginLeft:'auto',marginRight:'auto',clear:'both',width:'50%',height:'60px',marginTop:'40px',backgroundColor:'blue',color:'yellow'}}>{this.state.challenge_rating || "All"}</button>
              </div>
 
     )
