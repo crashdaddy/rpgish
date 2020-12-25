@@ -64,7 +64,7 @@ this.getMonsters()
               if (monster.name==="Succubus/Incubus") {monster.name="Succubus (Incubus)"}
               return(
             <div style={{display:'inline-block',margin:'10px'}}>
-              <img src={`../tokens/${monster.name}.png`} alt={monster.name} style={{width:'100px'}} />
+              <img src={`../Tokens/${monster.name}.png`} alt={monster.name} style={{width:'100px'}} />
               <a href={`https://www.dnd5eapi.co${monster.url}`} target="blank">{monster.name}</a>
             </div> 
             
