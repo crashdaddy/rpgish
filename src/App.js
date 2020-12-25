@@ -68,7 +68,7 @@ this.getMonsters()
               <a href={`https://www.dnd5eapi.co${monster.url}`} target="blank">{monster.name}</a>
             </div> 
             
-            )}  )  
+            )}  )   
             }
             <p/>
             <button onClick={this.changeLevel} style={{marginLeft:'auto',marginRight:'auto',clear:'both',width:'50%',height:'60px',marginTop:'40px',backgroundColor:'blue',color:'yellow'}}>{this.state.challenge_rating || "All"}</button>
