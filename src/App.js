@@ -61,7 +61,8 @@ this.getMonsters()
       
           <div style={{width:"90%",marginRight:'auto',marginLeft:'auto',display:'flex',flexDirection:'row',justifyContent:'space-between',alignItems:'flex-start',flexWrap:'wrap'}}>
             {monsters && monsters.map(monster => 
-            <div style={{display:'inline-block',margin:'5px'}}>
+            <div style={{display:'inline-block',margin:'10px'}}>
+              <img src={`../Tokens/${monster.name}.png`} alt={monster.name} style={{width:'100px'}} />
               <a href={`https://www.dnd5eapi.co${monster.url}`} target="blank">{monster.name}</a>
             </div> 
             )
