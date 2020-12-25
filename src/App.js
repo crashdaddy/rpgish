@@ -60,13 +60,15 @@ this.getMonsters()
     return (
       
           <div style={{width:"90%",marginRight:'auto',marginLeft:'auto',display:'flex',flexDirection:'row',justifyContent:'space-between',alignItems:'flex-start',flexWrap:'wrap'}}>
-            {monsters && monsters.map(monster => 
+            {monsters && monsters.map(monster => {
+              if (monster.name=="Succubus/Incubus") {monster.name="Succubus (Incubus)"}
+              return
             <div style={{display:'inline-block',margin:'10px'}}>
               <img src={`../Tokens/${monster.name}.png`} alt={monster.name} style={{width:'100px'}} />
               <a href={`https://www.dnd5eapi.co${monster.url}`} target="blank">{monster.name}</a>
             </div> 
-            )
-
+            
+            }  )  
             }
             <p/>
             <button onClick={this.changeLevel} style={{marginLeft:'auto',marginRight:'auto',clear:'both',width:'50%',height:'60px',marginTop:'40px',backgroundColor:'blue',color:'yellow'}}>{this.state.challenge_rating || "All"}</button>
