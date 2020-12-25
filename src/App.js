@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Axios from 'axios';
+import Paper from '@material-ui/core/Paper';
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -13,7 +14,7 @@ class App extends Component {
 
     this.state = {
       monsters: [],
-      challenge_rating: ''
+      challenge_rating: '?challenge_rating=1'
     
   }
 }
@@ -63,10 +64,11 @@ this.getMonsters()
             {monsters && monsters.map(monster => {
               if (monster.name==="Succubus/Incubus") {monster.name="Succubus (Incubus)"}
               return(
-            <div style={{display:'inline-block',margin:'10px'}}>
-              <img src={`../Tokens/${monster.name}.png`} alt={monster.name} style={{width:'100px'}} />
-              <a href={`https://www.dnd5eapi.co${monster.url}`} target="blank">{monster.name}</a>
-            </div> 
+            <Paper elevation={3} style={{margin:'20px',fontSize:'large',verticalAlign:'top',padding:'10px'}}>
+             <a href={`https://www.dnd5eapi.co${monster.url}`} target="blank">{monster.name}</a>
+             <br/> <img src={`../Tokens/${monster.name}.png`} alt={monster.name} style={{marginTop:'10px',width:'200px',float:'left'}} />
+              
+            </Paper> 
             
             )}  )   
             }
