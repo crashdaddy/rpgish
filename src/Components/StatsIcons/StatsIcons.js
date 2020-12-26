@@ -43,8 +43,10 @@ componentDidUpdate() {
         
     return (
       
-          <div style={{marginTop:'20px',marginLeft:'10px',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'flex-start',flexWrap:'wrap',float:'left'}}>
-            
+          <div style={{marginTop:'10px',fontWeight:'bold',marginLeft:'10px',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'flex-start',flexWrap:'wrap',float:'left'}}>
+              <div>
+              AC: {monsterData && monsterData.armor_class}<br/>
+             </div>
              <div>str: {monsterData && monsterData.strength}</div>
              <div>dex: {monsterData && monsterData.dexterity}</div>
              <div>con: {monsterData && monsterData.constitution}</div>
@@ -53,7 +55,7 @@ componentDidUpdate() {
              <div> cha:  {monsterData && monsterData.charisma}</div>
              <div style={{marginTop:'10px',fontWeight:'bold'}}>
               HP: {monsterData && monsterData.hit_points}<br/>
-              XP: {monsterData && monsterData.xp}
+              XP: {monsterData && monsterData.xp/4}
              </div>
            </div>
 
