@@ -51,6 +51,10 @@ componentDidUpdate() {
              <div> int: {monsterData && monsterData.intelligence}</div>
              <div>wis: {monsterData && monsterData.wisdom}</div>
              <div> cha:  {monsterData && monsterData.charisma}</div>
+             <div style={{marginTop:'10px',fontWeight:'bold'}}>
+              HP: {monsterData && monsterData.hit_points}<br/>
+              XP: {monsterData && monsterData.xp}
+             </div>
            </div>
 
     )
