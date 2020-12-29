@@ -29,7 +29,7 @@ class Login extends Component {
 
   loginAPI = () => {
 
-    const postData = { email: this.state.loginemail, password: this.state.loginpassword };
+    const postData = { playerName: this.state.loginemail, password: this.state.loginpassword };
     const loginUrl = "https://rpgishapi.herokuapp.com/login";
 
     fetch(loginUrl, {
@@ -43,7 +43,7 @@ class Login extends Component {
       .then(data => {
         if (data.code == "200") {
          // this.props.sendMessage(`You are logged in as ${data.userName}`)
-          this.bake_cookie("player", data)
+          this.bake_cookie("player", data.data)
         //  this.props.addUser(data)
           this.setState({
             loggingIn: false,
@@ -51,7 +51,7 @@ class Login extends Component {
           })
         }        
           else {
-            this.props.sendMessage("I'm not finding it")
+            //this.props.sendMessage("I'm not finding it")
             console.log("error code", data.code);
           }
       })
@@ -136,7 +136,7 @@ class Login extends Component {
                   value={this.state.email}
                   name="loginemail"
                   label="Email"
-                  type="email" />
+                  type="text" />
                 <TextField
                   required
                   onChange={this.handleTextChange}
