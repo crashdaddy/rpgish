@@ -20,7 +20,6 @@ getMonsterDetails = () => {
    "Content-Type": "application/xml; charset=utf-8"
  })
    .then((responseText) => {
-      console.log(responseText)
         self.setState({monster:responseText.data})
    })
    .catch((e) => {
@@ -55,7 +54,7 @@ componentDidUpdate() {
              <div> cha:  {monsterData && monsterData.charisma}</div>
              <div style={{marginTop:'10px',fontWeight:'bold'}}>
               HP: {monsterData && monsterData.hit_points}<br/>
-              XP: {monsterData && monsterData.xp/4}
+              XP: {monsterData && Math.floor(monsterData.xp/4)}
              </div>
            </div>
 
