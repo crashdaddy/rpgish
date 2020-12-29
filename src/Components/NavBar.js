@@ -61,7 +61,7 @@ export default function NavBar(props) {
           <ul className="nav-list">
             
             <li className="nav-list-item">
-              
+            {<Link className="nav-link" to="/login">Login</Link>}
             </li>
             {props.player ?
             <li className="nav-list-item">
