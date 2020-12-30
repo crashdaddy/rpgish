@@ -12,6 +12,7 @@ import {
 
 class Login extends Component {
   state = {
+    player: {},
     userName: '',
     loginemail: '',
     loginpassword: '',
@@ -44,8 +45,10 @@ class Login extends Component {
         if (data.code == "200") {
          // this.props.sendMessage(`You are logged in as ${data.userName}`)
           this.bake_cookie("player", data.data)
+          
         //  this.props.addUser(data)
           this.setState({
+            player: data.data,
             loggingIn: false,
             registering: false
           })
@@ -119,12 +122,12 @@ class Login extends Component {
     return (
       <div className="loginDiv">
 
-        {this.props.player ?
+        {this.state.player.playerName ?
           <div style={{ textAlign: 'center' }}>
-            <div style={{ textAlign: 'center', fontSize: 'xx-large', marginBottom: '20px' }}>Welcome back, {this.props.player.userName}<br />
-            You've already unpuzld {this.props.player.gamesPlayed} puzls. Let's do one more!<br />
+            <div style={{ textAlign: 'center', fontSize: 'xx-large', marginBottom: '20px' }}>Welcome back, {this.state.player.playerName}<br />
+            You've got {this.state.player.playerHP} HitPoints. Let's go adventuring!<br />
             </div>
-            <Link to={`/profile/${this.props.player.userName}`} ><Avatar name={this.props.player.userName} size={200} /></Link>
+             <Link to={`/profile/${this.state.player.playerName}`} ><Avatar name={this.state.player.playerName} size={200} /></Link> 
           </div>
           :
           <div style={{width:'80%', display: 'inline-flex', flexDirection: 'row', justifyItems: 'space-around',alignItems:'center' }}>
