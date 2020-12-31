@@ -9,6 +9,7 @@ import {
   Button,
   Container
 } from '@material-ui/core'
+import PlayerStats from '../StatsIcons/PlayerStats';
 
 class Login extends Component {
   state = {
@@ -86,7 +87,7 @@ class Login extends Component {
       swordBonus: 0,
       proficiencyBonus: 2
     };
-    const registerUrl = "https://rpgishapi.herokuapp.com/player";
+    const registerUrl = "https://cors-anywhere.herokuapp.com/https://rpgishapi.herokuapp.com/player";
     fetch(registerUrl, {
       method: 'post',
       body: JSON.stringify(postData),
@@ -98,6 +99,7 @@ class Login extends Component {
       .then(data => {
         
         if (data) {
+          this.bake_cookie("player", data)
          // this.props.sendMessage(`You are registered as ${this.state.userName}. You can login now!`)
           this.setState({
             loggingIn: false,
@@ -149,6 +151,7 @@ class Login extends Component {
             You've got {this.state.player.playerHP} HitPoints. Let's go adventuring!<br />
             </div>
              <Link to={`/profile/${this.state.player.playerName}`} ><Avatar name={this.state.player.playerName} size={200} /></Link> 
+             <PlayerStats player={this.state.player} style={{width:'50%'}}/>
           </div>
           :
           <div style={{width:'80%', display: 'inline-flex', flexDirection: 'row', justifyItems: 'space-around',alignItems:'center' }}>
