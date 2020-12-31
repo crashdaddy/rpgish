@@ -3,7 +3,22 @@ import Avatar from '../Avatar/Avatar';
 
 
 class Profile extends Component {
-
+    constructor(props) {
+        super(props);
+        // Don't call this.setState() here!
+        this.state = {
+            player: {},
+            userName: '',
+            loginemail: '',
+            loginpassword: '',
+            regemail: '',
+            regpassword: '',
+            loggingIn: false,
+            registering: false
+          }
+      }
+  
+    
     read_cookie(name) {
         var result = document.cookie.match(new RegExp(name + '=([^;]+)'));
         result && (result = JSON.parse(result[1]));
@@ -17,7 +32,9 @@ class Profile extends Component {
         player = this.read_cookie("player");
         console.log("player",player)
         legit=true
-       
+        this.setState({
+            player: player
+        })
         }
       }
 
@@ -25,6 +42,11 @@ class Profile extends Component {
         return(
             <div>
                 <Avatar name={this.props.match.params.playerName} size={200} />
+                {this.state.player.playerName && 
+                <div>
+                    {this.state.player.playerHP}
+                </div>
+                }
             </div>
         )
     }
