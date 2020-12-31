@@ -32,7 +32,7 @@ class Login extends Component {
   loginAPI = () => {
 
     const postData = { playerName: this.state.loginemail, password: this.state.loginpassword };
-    const loginUrl = "https://rpgishapi.herokuapp.com/login";
+    const loginUrl = "https://cors-anywhere.herokuapp.com/https://rpgishapi.herokuapp.com/login";
 
     fetch(loginUrl, {
       method: 'post',
