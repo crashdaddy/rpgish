@@ -96,19 +96,19 @@ class Login extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        if (data.code == "200") {
-          console.log(data.data);
-          this.props.sendMessage(`You are registered as ${this.state.userName}. You can login now!`)
+        
+        if (data) {
+         // this.props.sendMessage(`You are registered as ${this.state.userName}. You can login now!`)
           this.setState({
             loggingIn: false,
             registering: false,
-            player: data.data
+            player: data
           })
         } else {
-          if(data.error.errno==1062) this.props.sendMessage("There's already somebody using that username or email address!");
-          console.log("error code", data);
-        } 
-
+        if (data.message) {
+          console.log(data.message);
+        }
+      }
       })
       .catch((error) => {
         console.log('Error: ', error);
