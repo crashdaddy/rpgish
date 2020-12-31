@@ -12,7 +12,7 @@ const Router = () => {
             <Route exact path ="/"  render={(props) => <App {...props}  key={Date.now()} />}/>
             <Route exact path ="/Compendium"  render={(props) => <Compendium {...props}  key={Date.now()} />}/>
             <Route exact path ="/login"  render={(props) => <Login {...props}  key={Date.now()} />}/>
-            <Route exact path ="/profile" render={(props) => <Profile {...props} key={Date.now()} />}/>
+            <Route exact path ="/profile/:playerName" render={(props) => <Profile {...props} key={Date.now()} />}/>
         </Switch>
     )
 }

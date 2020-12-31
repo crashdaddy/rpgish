@@ -1,39 +1,34 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React, {Component} from 'react';
+import Avatar from '../Avatar/Avatar';
 
 
-// this function takes a string and uses
-// a hash to assign a color to that string
-// in this case, we're using it to assign
-// the backgroundColor to each user's Avatar
-// based on their user name
-function generateHslColor(username, s, l) {
-    var hash = 0;
-    for (var i = 0; i < username.length; i++) {
-      hash = username.charCodeAt(i) + ((hash << 5) - hash);
+class Profile extends Component {
+
+    read_cookie(name) {
+        var result = document.cookie.match(new RegExp(name + '=([^;]+)'));
+        result && (result = JSON.parse(result[1]));
+        return result;
+      }
+
+    componentDidMount = () => {
+        let player={};
+        let legit = false;
+        if (this.read_cookie("player")) {
+        player = this.read_cookie("player");
+        console.log("player",player)
+        legit=true
+       
+        }
+      }
+
+    render(){
+        return(
+            <div>
+                <Avatar name={this.props.match.params.playerName} size={200} />
+            </div>
+        )
     }
-  
-    var h = hash % 360;
-    return 'hsl('+h+', '+s+'%, '+l+'%)';
-  }
-
-export default function Profile(props) {
-
-    const bgColor = generateHslColor(props.name,100,75)
-
-    const avatarStyle = {
-        width:`${props.size}px`,
-        height:`${props.size}px`,
-        verticalAlign:'middle',
-        borderRadius:'50%',
-        backgroundColor:bgColor
-    }
-
-    return(
-        <div style={{display:'inline'}}>
-           <Link to={`/profile/${props.name}`} ><img src={`https://robohash.org/${props.name}.png`} style={avatarStyle} alt='' /></Link>
-         
-        </div>
-    )
-
 }
+
+export default Profile
+
