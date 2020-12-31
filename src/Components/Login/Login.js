@@ -66,7 +66,26 @@ class Login extends Component {
 
   registerUser = () => {
 
-    const postData = { userName: this.state.userName, email: this.state.regemail, password: this.state.regpassword };
+    const postData = { 
+      playerName: this.state.userName, 
+      playerEmail: this.state.regemail, 
+      password: this.state.regpassword, 
+      hp: 22,
+      con: 19,
+      wis: 17,
+      dex: 12,
+      str: 18,
+      int: 19,
+      cha: 18,
+      xp: 0,
+      level: 1,
+      gold: 0,
+      armor: '',
+      armorBonus: 0,
+      sword: '',
+      swordBonus: 0,
+      proficiencyBonus: 2
+    };
     const registerUrl = "https://rpgishapi.herokuapp.com/player";
     fetch(registerUrl, {
       method: 'post',
@@ -78,10 +97,12 @@ class Login extends Component {
       .then(res => res.json())
       .then(data => {
         if (data.code == "200") {
+          console.log(data.data);
           this.props.sendMessage(`You are registered as ${this.state.userName}. You can login now!`)
           this.setState({
             loggingIn: false,
-            registering: false
+            registering: false,
+            player: data.data
           })
         } else {
           if(data.error.errno==1062) this.props.sendMessage("There's already somebody using that username or email address!");
@@ -196,7 +217,7 @@ class Login extends Component {
                   type="submit"
                   className="reg-button"
                   variant="contained"
-                  color="primary">Register</Button>
+                  color="primary">Generate Player</Button>
               </form>
             </Container>
           </div>
