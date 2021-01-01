@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Avatar from '../Avatar/Avatar';
-
+import PlayerStats from '../StatsIcons/PlayerStats';
 
 class Profile extends Component {
     constructor(props) {
@@ -44,7 +44,7 @@ class Profile extends Component {
                 <Avatar name={this.props.match.params.playerName} size={200} />
                 {this.state.player.playerName && 
                 <div>
-                    {this.state.player.playerHP}
+                      <PlayerStats player={this.state.player} style={{width:'50%'}}/>
                 </div>
                 }
             </div>
