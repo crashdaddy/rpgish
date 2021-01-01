@@ -8,6 +8,7 @@ class Profile extends Component {
         // Don't call this.setState() here!
         this.state = {
             player: {},
+            profilePlayer: {},
             userName: '',
             loginemail: '',
             loginpassword: '',
@@ -36,15 +37,19 @@ class Profile extends Component {
             player: player
         })
         }
+           // Simple GET request using fetch
+    fetch('https://cors-anywhere.herokuapp.com/https://rpgishapi.herokuapp.com/findPlayer/'+ req.params.playerName)
+    .then(response => response.json())
+    .then(data => this.setState({ profilePlayer: data }));
       }
 
     render(){
         return(
             <div>
                 <Avatar name={this.props.match.params.playerName} size={200} />
-                {this.state.player.playerName && 
+                {this.state.profilePlayer.playerName && 
                 <div>
-                      <PlayerStats player={this.state.player} style={{width:'50%'}}/>
+                      <PlayerStats player={this.state.profilePlayer} style={{width:'50%'}}/>
                 </div>
                 }
             </div>
