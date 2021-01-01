@@ -65,19 +65,23 @@ class Login extends Component {
       })
   }
 
+  randomIntFromInterval= (min, max) => { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
   registerUser = () => {
 
     const postData = { 
       playerName: this.state.userName, 
       playerEmail: this.state.regemail, 
       password: this.state.regpassword, 
-      hp: 22,
-      con: 19,
-      wis: 17,
-      dex: 12,
-      str: 18,
-      int: 19,
-      cha: 18,
+      hp: this.randomIntFromInterval(10, 22),
+      con: this.randomIntFromInterval(10, 18),
+      wis: this.randomIntFromInterval(10, 18),
+      dex: this.randomIntFromInterval(10, 18),
+      str: this.randomIntFromInterval(10, 18),
+      int: this.randomIntFromInterval(10, 18),
+      cha: this.randomIntFromInterval(10, 18),
       xp: 0,
       level: 1,
       gold: 0,
@@ -194,7 +198,7 @@ class Login extends Component {
                   onChange={this.handleTextChange}
                   value={this.state.userName}
                   name="userName"
-                  label="Username"
+                  label="Character Name"
                   type="text" />
 
                 <TextField
