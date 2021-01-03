@@ -38,7 +38,7 @@ class Profile extends Component {
         })
         }
            // Simple GET request using fetch
-           console.log(props.match.params.playerName)
+        //   console.log(props.match.params.playerName)
     // fetch('https://cors-anywhere.herokuapp.com/https://rpgishapi.herokuapp.com/findPlayer/'+ props.match.params.playerName)
     // .then(response => response.json())
     // .then(data => this.setState({ profilePlayer: data }));
@@ -47,12 +47,14 @@ class Profile extends Component {
     render(){
         return(
             <div>
-                <Avatar name={this.props.match.params.playerName} size={200} />
+                <div style={{marginTop:'100px',textAlign:'center'}}>
+                <Avatar name={this.props.match.params.playerName} size={200} /><br/>
                 {this.state.profilePlayer.playerName && 
                 <div>
                       <PlayerStats player={this.state.profilePlayer} style={{width:'50%'}}/>
                 </div>
                 }
+                </div>
             </div>
         )
     }
